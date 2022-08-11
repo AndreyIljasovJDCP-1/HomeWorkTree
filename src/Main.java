@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 import static java.util.Comparator.nullsFirst;
 
@@ -20,7 +17,7 @@ public class Main {
         personList.add(new Person("Гай", "Юлий Цезарь", 55));
         personList.add(new Person("Владимир", "Красное Солнышко", 50));
         personList.add(new Person("Вася", "Иванов", 15));
-        personList.add(new Person("Вася", "Пупкин", 10));
+        personList.add(new Person("Эдуард", null, null));
         personList.add(null);
 
         Collections.sort(personList, pr);
@@ -31,5 +28,15 @@ public class Main {
         }
         System.out.println("Удален элемент: " + personList.remove(0));
 
+        Iterator<Person> iterator = personList.iterator();
+
+        while (iterator.hasNext()) {
+            Person next = iterator.next();
+
+            if (next.getSurname() == null || next.getAge() == null || next.getName() == null) {
+                System.out.println("Удален элемент: " + next);
+                iterator.remove();
+            }
+        }
     }
 }
