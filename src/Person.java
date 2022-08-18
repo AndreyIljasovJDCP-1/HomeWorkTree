@@ -2,7 +2,7 @@ public class Person {
 
     private String name;
     private String surname;
-    private Integer age;
+    private int age;
 
     public Person(String name, String surname, Integer age) {
         this.name = name;
@@ -37,7 +37,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Слов в фамилии: " + (surname != null ? surname.split(" ").length + "" : "0")
+        return "Слов в фамилии: " + surname.split(" ").length
                 + "| Возраст: " + age + "| ФИО: " + name + " " + surname;
     }
 }

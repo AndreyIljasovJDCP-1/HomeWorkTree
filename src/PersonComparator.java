@@ -15,8 +15,15 @@ public class PersonComparator implements Comparator<Person> {
     @Override
     public int compare(Person o1, Person o2) {
 
-        int surname1 = o1.getSurname() != null ? o1.getSurname().split(" ").length : 0;
-        int surname2 = o2.getSurname() != null ? o2.getSurname().split(" ").length : 0;
+        if (o1 == null) {
+            return -1;
+        }
+        if (o2 == null) {
+            return 1;
+        }
+
+        int surname1 =o1.getSurname().split(" ").length;
+        int surname2 =o2.getSurname().split(" ").length;
         int age1 = o1.getAge();
         int age2 = o2.getAge();
 
