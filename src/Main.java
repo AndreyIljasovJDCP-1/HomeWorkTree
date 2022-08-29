@@ -7,7 +7,7 @@ public class Main {
 
         PersonComparator personComparator = new PersonComparator(4);
         List<Person> personList = new ArrayList<>();
-        Predicate<Person> deleteByAge = human -> (human == null || human.getAge() <= 18);
+        Predicate<Person> deleteByAge = human -> (human == null || human.getAge() < 18);
 
         personList.add(null);
         personList.add(new Person("Михаил", "Паниковский (человек без паспорта)", 60));
@@ -19,7 +19,7 @@ public class Main {
         personList.add(new Person("Гай", "Юлий Цезарь", 55));
         personList.add(new Person("Владимир", "Красное Солнышко", 50));
         personList.add(new Person("Вася", "Иванов", 15));
-        personList.add(new Person("Вася", "Пупкин", 18));
+        personList.add(new Person("Вася", "Пупкин", 17));
         personList.add(null);
 
         personList.sort(personComparator);
