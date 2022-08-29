@@ -1,9 +1,6 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
-import static java.util.Comparator.nullsFirst;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,22 +18,19 @@ public class Main {
         personList.add(new Person("Гай", "Юлий Цезарь", 55));
         personList.add(new Person("Владимир", "Красное Солнышко", 50));
         personList.add(new Person("Вася", "Иванов", 15));
-        personList.add(new Person("Вася", "Пупкин", 18));
+        personList.add(new Person("Вася", "Пупкин", 17));
         personList.add(null);
 
-        Collections.sort(personList, personComparator);
-        System.out.println("Список->>");
+        personList.sort(personComparator);
 
+        System.out.println("Список->>");
         for (Person person : personList) {
             System.out.println(person);
         }
 
-        System.out.println("Удален элемент: " + personList.remove(0));
-        System.out.println("Удален элемент: " + personList.remove(personList.indexOf(null)));
-        System.out.println("Удален элемент: " + personList.remove(personList.indexOf(null)));
+        personList.removeIf(human -> (human == null || human.getAge() < 18));
 
         System.out.println("Список->>");
-
         for (Person person : personList) {
             System.out.println(person);
         }
