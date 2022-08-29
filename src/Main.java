@@ -1,15 +1,13 @@
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-
-import static java.util.Comparator.nullsFirst;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
 
         PersonComparator personComparator = new PersonComparator(4);
         List<Person> personList = new ArrayList<>();
+        Predicate<Person> deleteByAge = human -> (human == null || human.getAge() <= 18);
 
         personList.add(null);
         personList.add(new Person("Михаил", "Паниковский (человек без паспорта)", 60));
@@ -24,19 +22,16 @@ public class Main {
         personList.add(new Person("Вася", "Пупкин", 18));
         personList.add(null);
 
-        Collections.sort(personList, personComparator);
-        System.out.println("Список->>");
+        personList.sort(personComparator);
 
+        System.out.println("Список->>");
         for (Person person : personList) {
             System.out.println(person);
         }
 
-        System.out.println("Удален элемент: " + personList.remove(0));
-        System.out.println("Удален элемент: " + personList.remove(personList.indexOf(null)));
-        System.out.println("Удален элемент: " + personList.remove(personList.indexOf(null)));
+        personList.removeIf(deleteByAge);
 
         System.out.println("Список->>");
-
         for (Person person : personList) {
             System.out.println(person);
         }
