@@ -7,7 +7,6 @@ public class Main {
 
         PersonComparator personComparator = new PersonComparator(4);
         List<Person> personList = new ArrayList<>();
-        Predicate<Person> deleteByAge = human -> (human == null || human.getAge() < 18);
 
         personList.add(null);
         personList.add(new Person("Михаил", "Паниковский (человек без паспорта)", 60));
@@ -29,7 +28,7 @@ public class Main {
             System.out.println(person);
         }
 
-        personList.removeIf(deleteByAge);
+        personList.removeIf(human -> (human == null || human.getAge() < 18));
 
         System.out.println("Список->>");
         for (Person person : personList) {
