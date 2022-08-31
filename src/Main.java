@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,15 +23,11 @@ public class Main {
         personList.sort(personComparator);
 
         System.out.println("Список->>");
-        for (Person person : personList) {
-            System.out.println(person);
-        }
+        personList.forEach(System.out::println);
 
         personList.removeIf(human -> (human == null || human.getAge() < 18));
 
         System.out.println("Список->>");
-        for (Person person : personList) {
-            System.out.println(person);
-        }
+        personList.forEach(System.out::println);
     }
 }
